@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        overflow: hidden;
+        font-family: sans-serif;
+      }
+
+      span {
+        display: block;
+        float: left;
+      }
+
+      #stage { overflow: hidden; }
+    </style>
+  </head>
+  <body>
+    <div id='stage'></div>
+    <script>
+      (function () {
+        'use strict';
+        var colors, stage, randomColor, removeLine, append;
+
+        colors = [
+          'aliceblue',
+          'antiquewhite',
+          'aqua',
+          'aquamarine',
+          'azure',
+          'beige',
+          'bisque',
+          'black',
+          'blanchedalmond',
+          'blue',
+          'blueviolet',
+          'brown',
+          'burlywood',
+          'cadetblue',
+          'chartreuse',
+          'chocolate',
+          'coral',
+          'cornflowerblue',
+          'cornsilk',
+          'crimson',
+          'cyan',
+          'darkblue',
+          'darkcyan',
+          'darkgoldenrod',
+          'darkgray',
+          'darkgreen',
+          'darkkhaki',
+          'darkmagenta',
+          'darkolivegreen',
+          'darkorange',
+          'darkorchid',
+          'darkred',
+          'darksalmon',
+          'darkseagreen',
+          'darkslateblue',
+          'darkslategray',
+          'darkturquoise',
+          'darkviolet',
+          'deeppink',
+          'deepskyblue',
+          'dimgray',
+          'dodgerblue',
+          'firebrick',
+          'floralwhite',
+          'forestgreen',
+          'fuchsia',
+          'gainsboro',
+          'ghostwhite',
+          'gold',
+          'goldenrod',
+          'gray',
+          'green',
+          'greenyellow',
+          'honeydew',
+          'hotpink',
+          'indianred',
+          'indigo',
+          'ivory',
+          'khaki',
+          'lavender',
+          'lavenderblush',
+          'lawngreen',
+          'lemonchiffon',
+          'lightblue',
+          'lightcoral',
+          'lightcyan',
+          'lightgoldenrodyellow',
+          'lightgray',
+          'lightgreen',
+          'lightpink',
+          'lightsalmon',
+          'lightseagreen',
+          'lightskyblue',
+          'lightslategray',
+          'lightsteelblue',
+          'lightyellow',
+          'lime',
+          'limegreen',
+          'linen',
+          'magenta',
+          'maroon',
+          'mediumaquamarine',
+          'mediumblue',
+          'mediumorchid',
+          'mediumpurple',
+          'mediumseagreen',
+          'mediumslateblue',
+          'mediumspringgreen',
+          'mediumturquoise',
+          'mediumvioletred',
+          'midnightblue',
+          'mintcream',
+          'mistyrose',
+          'moccasin',
+          'navajowhite',
+          'navy',
+          'oldlace',
+          'olive',
+          'olivedrab',
+          'orange',
+          'orangered',
+          'orchid',
+          'palegoldenrod',
+          'palegreen',
+          'paleturquoise',
+          'palevioletred',
+          'papayawhip',
+          'peachpuff',
+          'peru',
+          'pink',
+          'plum',
+          'powderblue',
+          'purple',
+          'red',
+          'rosybrown',
+          'royalblue',
+          'saddlebrown',
+          'salmon',
+          'sandybrown',
+          'seagreen',
+          'seashell',
+          'sienna',
+          'silver',
+          'skyblue',
+          'slateblue',
+          'slategray',
+          'snow',
+          'springgreen',
+          'steelblue',
+          'tan',
+          'teal',
+          'thistle',
+          'tomato',
+          'turquoise',
+          'violet',
+          'wheat',
+          'white',
+          'whitesmoke',
+          'yellow',
+          'yellowgreen'
+        ];
+
+        stage = document.getElementById('stage');
+
+        randomColor = function() {
+          return colors[Math.floor(Math.random() * colors.length)];
+        };
+
+        removeLine = function() {
+          for (var i = 0; i < stage.childNodes.length; i++) {
+            if (stage.childNodes[0].offsetTop === stage.childNodes[i].offsetTop) {
+              stage.removeChild(stage.childNodes[i]);
+            } else break;
+          };
+        };
+
+        append = function() {
+          var color, word, item;
+          color = randomColor(), word = randomColor();
+          item = document.createElement('span');
+          item.appendChild(document.createTextNode(word));
+          item.style.color = color;
+          stage.appendChild(item);
+          if (document.body.offsetHeight > innerHeight) removeLine();
+        };
+
+        setInterval(append, 250);
+      }());
+    </script>
+  </body>
+</html>
